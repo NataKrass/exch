@@ -24,7 +24,7 @@ var Countdown = {
   init: function() {
    
     // (year, month, day, hours, mins, sec)
-    var startDate = new Date(2020, 3, 11, 00, 00, 0);
+    var startDate = new Date(2020, 3, 27, 00, 00, 0);
 
     var second = 1000;
     var minute = second * 60;
@@ -57,6 +57,8 @@ var Countdown = {
       $('.countdown').addClass('d-none');
       $('.main-header_text').addClass('d-none');
       $('.description').addClass('countless');
+      $('.register-btn').removeClass('d-none');
+      $('.top-nav_btn').removeClass('d-none');
     }
   }
   DeadLine();
@@ -180,9 +182,8 @@ var Countdown1 = {
 
   // Initialize the countdown
   init: function() {
-    // !!!!!!!!! Конечная дата !!!!!!!!!!!!!!!!!!
-    // (год, месяц, день, часы, минуты, секунды)
-    var startDate = new Date(2020, 3, 11, 00, 00, 0);
+   // (year, month, day, hours, mins, sec)
+    var startDate = new Date(2020, 3, 27, 00, 00, 0);
 
     var second = 1000;
     var minute = second * 60;
@@ -480,77 +481,10 @@ $('#slick-thumbs').on('init', function(){
 
 
 
-
-//  test slider
-$('.slick').slick({
-
-  rows: 2,
-  centerMode: true,
-  centerPadding: '40px',
-  infinite: false,
-  dots: false,
-  arrows: true,
-  slidesPerRow: 3,
-  slidesToScroll: 1,
-});
-
-// When the filter values are changed, 
-// apply the filter to slick.
-$('form.filter select').on('change', function() {
-  var filterClass = getFilterValue();
-  $('.filter-class').text(filterClass);
-  $('.slick').slick('slickUnfilter');
-  $('.slick').slick('slickFilter', filterClass);
-});
-
-
-/**
- * This just reads the inputs from the 
- * selects and creates the filter.
- */
-function getFilterValue() {
-  // Grab all the values from the filters.
-  var values = $('.filter-group').map(function() {
-    // For each group, get the select values.
-    var groupVal = $(this).find('select').map(function() {
-      return $(this).val();
-    }).get();
-    // join the values together.
-    return groupVal.join('');
-  }).get();
-  // Remove empty strings from the filter array.
-  // and join together with a comma. this way you 
-  // can use multiple filters.
-  return values.filter(function(n) {
-    return n !== "";
-  }).join(',');
-}
-
-/**
- * Add a delete button to the filter group.
- */
-$('.filter-group .delete').on('click', function(event) {
-  event.preventDefault();
-  $(this).closest('.filter-group').remove();
-});
-
-/**
- * Add a filter group row.
- */
-$('.add-filter').on('click', function(event) {
-  event.preventDefault()
-  $('form.filter .filter-group').first().clone(true).insertBefore($('form.filter .add-filter'));
-});
-
-
-
-
-
 //globe
 //
 // Configuration
 //
-
 // ms to wait after dragging before auto-rotating
 var rotationDelay = 3000
 // scale of the globe (not the canvas element)
@@ -575,23 +509,29 @@ function enter(country) {
     return c.id === country.id
   })
   current.text(country && country.name || '');
-  amount.text('additional info')
+  number.text(country.id)
+  city.text(country.city)
+  console.log(country.id)
+  console.log(country.name)
+  console.log(country.city)
 }
 
 function leave(country) {
-   current.text('Choose a country')
+  //  current.text('Choose a country')
 }
 
 //
 // Variables
 //
 
-var current = d3.select('#current .country')
-var amount = d3.select('#current .amount')
+var current = d3.select('.current .country')
+var number = d3.select('.current .amount')
+var city = d3.select('.current .city')
 var canvas = d3.select('#globe')
 var context = canvas.node().getContext('2d')
 var water = {type: 'Sphere'}
-var projection = d3.geoOrthographic().precision(0.1)
+var projection = d3.geoOrthographic().scale(width / 2.1).translate([width / 2, height / 2]).precision(0.1)
+
 var graticule = d3.geoGraticule10()
 var path = d3.geoPath(projection).context(context)
 var v0 // Mouse position in Cartesian coordinates at start of drag gesture.
@@ -618,19 +558,25 @@ function setAngles() {
 }
 
 function scale() {
-
-  width = document.documentElement.clientWidth / 2,
-  height = document.documentElement.clientHeight
+  if(screen.width < 768){
+    width = document.documentElement.clientWidth / 1.1
+    height = document.documentElement.clientHeight / 1.3
   canvas.attr('width', width).attr('height', height)
   projection
     .scale((scaleFactor * Math.min(width, height)) / 2)
     .translate([width / 2, height / 2])
   render();
-  if(screen.width < 768){
-    width = 400;
-    console.log(768);
-    return width;
+  } else {
+    console.log("width");
+    width = document.documentElement.clientWidth / 2
+    height = document.documentElement.clientHeight
+    canvas.attr('width', width).attr('height', height)
+    projection
+      .scale((scaleFactor * Math.min(width, height)) / 2)
+      .translate([width / 2, height / 2])
+    render();
   }
+
 }
 
 function startRotation(delay) {
@@ -666,15 +612,68 @@ function render() {
   stroke(graticule, colorGraticule)
   fill(land, colorLand)
   if (currentCountry) {
-    fill(currentCountry, colorCountry)
+    fill(currentCountry, colorCountry);
+   
+    var city = [];
+
+    switch (+currentCountry.id) {
+      case 840:
+        city = [cities[0], cities[1]];
+        break;
+      case 40:
+        city = [cities[2]];
+        break;
+      case 826:
+        city = [cities[3]];
+        break;
+      case 804:
+        city = [cities[4]];
+        break;
+      default:
+        city = [[]];
+    }
+
+
+    var point = { 
+      type: "MultiPoint", 
+      coordinates: city 
+    }; 
+    
+      /* fill markers */ 
+      context.beginPath();
+      path(point);
+      context.fillStyle = '#44719b';
+      context.fill();
+    
   }
 }
+
+/* coordinates - longitude and latitude */
+var cities = [
+    [-71.0597700, 42.3584300],
+    [-74.0059700, 40.7142700],
+    [16.3720800, 48.2084900],
+    [-0.1257400, 51.5085300],
+    [30.5238000, 50.4546600]
+];
+
+var points = { 
+  type: "MultiPoint", 
+  coordinates: cities 
+}; 
+
 
 function fill(obj, color) {
   context.beginPath()
   path(obj)
   context.fillStyle = color
   context.fill()
+  
+  /* fill markers */ 
+  context.beginPath();
+  path(points);
+  context.fillStyle = '#d6d6d6';
+  context.fill();
 }
 
 function stroke(obj, color) {
@@ -777,22 +776,23 @@ loadData(function(world, cList) {
 })
 
 
-
+$('.current').click(function(e){
+  $(this).toggleClass('current-active');
 });
-
-
-
-
-
-
-
-
 
 $('.js-toggle-menu').click(function(e){
   e.preventDefault();
   $('.mobile-header-nav').slideToggle();
   $(this).toggleClass('open');
 });
+
+});
+ 
+/////preglobe
+
+
+//////
+
 
 
 
