@@ -532,10 +532,11 @@ h4 {
 .screen input[type=range] {
   -webkit-appearance: none; 
   width: 80%; 
+  -moz-width: 100%; 
 } 
 .slick-thumbs-wrapper input[type=range] {
   -webkit-appearance: none; 
-  width: 86%; 
+  width: 90%; 
 } 
 .screen input[type=range]::-webkit-slider-thumb,
 .slick-thumbs-wrapper input[type=range]::-webkit-slider-thumb {
@@ -563,15 +564,28 @@ h4 {
   cursor: pointer;  
 }
 /*Firefox */
-.screen input[type=range]::-moz-range-thumb 
-.slick-thumbs-wrapper input[type=range]::-moz-range-thumb {
+.screen input[type="range"]::-moz-range-thumb,
+.slick-thumbs-wrapper input[type="range"]::-moz-range-thumb {
   border: 1px solid #b7b7b7;
   height: 15px;
-  width: 290px;
   border-radius: 8px;
   background: #eeeeee;
   cursor: pointer;
 }
+.screen input[type=range]::-moz-appearance {
+  -webkit-appearance: none; 
+  width: 18%; 
+} 
+.screen input[type=range]::-moz-ms-track {
+  -webkit-appearance: none; 
+  width: 16%; 
+}
+.slick-thumbs-wrapper input[type="range"]::-moz-range-thumb,
+.screen input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none; 
+  width: 20%; 
+} 
+
 /* IE */
 .screen input[type=range]::-ms-thumb,
 .slick-thumbs-wrapper input[type=range]::-ms-thumb { 
@@ -596,9 +610,10 @@ h4 {
 .slick-thumbs-wrapper input[type=range]:focus::-webkit-slider-runnable-track  {
   background: transparent;
 } 
-.screen input[type=range]::-moz-range-track,
+/*mozilla*/
+.screen input[type=range]::-moz-range-track, 
 .slick-thumbs-wrapper input[type=range]::-moz-range-track {
-  width: 80%;
+  width: 100%;
   height: 14.5px;
   cursor: pointer;
   box-shadow: -1px -1px 1px #666, 1px 0px 1px #999; 
@@ -606,6 +621,7 @@ h4 {
   border-radius: 8px;
   border: 0.2px solid #666;
 }
+/* */
 .screen input[type=range]::-ms-track,
 .slick-thumbs-wrapper input[type=range]::-ms-track {
   width: 80%;
@@ -646,12 +662,19 @@ h4 {
 .screen .slick-slide div {
   transition: 0.7s;
 }
+.screen .slick-slide div {
+  border: 0.2px solid #5b8eb5;
+  border-radius: 2px;
+  overflow: hidden;
+}
 .screen .slick-center div {
   transform: scale(4);
   -webkit-transform: scale(4);
   -moz-transform: scale(4);
   position: relative;
   z-index: 9;
+  border: 0.0px solid #5b8eb5;
+  -moz-border: 0.0px solid #5b8eb5;
 }
 .screen .slick-active-first div, 
 .screen .slick-active-last div {
@@ -660,11 +683,7 @@ h4 {
   -webkit-transform: scale(2.5);
   -moz-transform: scale(2.5);
 }
-.screen .slick-slide div {
-  border: 0.2px solid blue;
-  border-radius: 2px;
-  overflow: hidden;
-}
+
 .screen .slick-center .slide {
   box-shadow: none;
 }
@@ -723,10 +742,10 @@ h4 {
   border-left: 8px solid #5b8eb5;
 }
 .slick-thumbs-wrapper .slick-next{
-  right: 72px;
+  right: 36px;
 }
 .slick-thumbs-wrapper .slick-prev{
-  left: 72px;
+  left: 36px;
 }
 .screen .slick-track {
   padding-top: 155px;
@@ -961,16 +980,118 @@ h4 {
   z-index: 3;
   padding: 15px;
   background: #fff;
-  width: 120px;
-  top: 25px;
+  width: 150px;
+  top: 35px;
   left: -60px;
+  box-shadow: 0px 1px 6px 2px rgba(0, 0, 0, 0.2), inset 2px 4px 0 0 rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+}
+.filter-nav_location {
+  width: auto;
+}
+.navbar-nav li a {
+  white-space: nowrap;
+  color: #686868;
 }
 .location-filter {
   padding-top: 27px;
 }
 .location .search-input {
   width: 98%;
+ 
 }
+.tab {
+  position: relative;
+  margin-bottom: 1px;
+  width: 100%;
+  color: #fff;
+}
+.tab input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+.tab label {
+  background: #699ec7;
+  padding: 20px 30px 9px;
+  border-radius: 5px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+.blue label {
+  background: #2980b9;
+}
+.tab-content {
+  max-height: 0;
+  overflow: hidden;
+  background: #f2f2f2;
+  border-radius: 0 0 4px 4px;
+  -webkit-transition: max-height .35s;
+  -o-transition: max-height .35s;
+  transition: max-height .35s;
+}
+.blue .tab-content {
+  background: #3498db;
+}
+.tab-content p {
+  margin: 1em;
+}
+/* :checked */
+.tab input:checked ~ .tab-content,
+.tab .checked .tab-content {
+  max-height: 100%;
+}
+.filter-nav_location ul li a {
+  cursor: pointer;
+}
+/* Icon */
+.tab label::after {
+  position: absolute;
+  right: 23px;
+  top: 21px;
+  display: block;
+  -webkit-transition: all .35s;
+  -o-transition: all .35s;
+  transition: all .35s;
+  width: 0;
+    height: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 8px solid #fff;
+    margin-top: 13px;
+}
+.location-btn {
+  margin-bottom: 50px;
+}
+.tab input[type=radio] + label::after {
+  content: " ";
+}
+
+.tab input[type=radio]:checked + label::after {
+  transform: rotateX(180deg);
+}
+.tab input[type=radio]:checked + label {
+  border-radius: 5px 5px 0 0;
+  position: relative;
+}
+.tab input[type=radio]:checked + label:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -23px;
+  top: 23px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid #699ec7;
+  border-bottom: 12px solid transparent;
+  border-top: 12px solid transparent;
+}
+/* end */
 .location-heading {
   background: #699ec7;
   padding: 20px 30px 9px;
@@ -1011,10 +1132,9 @@ h4 {
 }
 .location-box {
   background: #f2f2f2;
-  padding: 0 30px;
-  height: 0;
+  padding: 30px 30px 0;
   border-radius: 0 0 5px 5px;
-  overflow: hidden;
+  overflow: hidden; 
   display: flex;
   transition: all .3s ease-in-out;
 }
@@ -1025,6 +1145,7 @@ h4 {
 .location-box_description {
   font-size: 16px;
   color: #6e6e6e;
+  cursor: pointer;
 }
 .location-box_list li {
   display: flex;
@@ -1032,7 +1153,7 @@ h4 {
 .location-box_list li p {
   font-size: 16px;
   color: #6e6e6e;
-  margin-bottom: 0;
+  margin: 0;
 }
 .location-box_name {
   width: 100px;
@@ -1054,19 +1175,8 @@ h4 {
   width: 29px;
   position: relative;
   margin-right: 30px;
+  cursor: pointer;
 }
-/* .location-box_mark:after {
-  content: '';
-  display: block;
-  position: absolute;
-  width: 0; 
-  height: 0; 
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 10px solid #44719b;
-  bottom: -6px;
-  left: 5px;
-} */
 .location-box_arrow {
   width: 0; 
   height: 0; 
@@ -1084,6 +1194,8 @@ h4 {
 }
 .continent {
   float: right;
+  color: #fff;
+  margin-right: 8px;
 }
 .current {
   width: 490px;
@@ -1169,9 +1281,13 @@ h4 {
 }
 
 
+@media (min-width: 1280px){
+  .container {
+    max-width: 1244px;
+  }
+}
 
-
-@media (min-width: 1500px){
+@media (min-width: 1480px){
   .container {
     max-width: 1444px;
   }
@@ -1506,6 +1622,15 @@ h4 {
   .search-form form {
     width: 84%;
   }
+  .location-box {
+    padding: 8px 14px 0;
+  }
+  .location-box_list {
+    padding-top: 0;
+  }
+  .location-box_mark {
+    margin-right: 15px;
+  }
 }
 @media (max-width: 490px){
   .card p {
@@ -1591,6 +1716,9 @@ h4 {
   }
 }
 @media (max-width: 380px){
+  html, body {
+    overflow-x: hidden;
+ }
   .top-nav_logo a {
     padding: 0;
   }
@@ -1655,55 +1783,3 @@ h4 {
 }
 
 
-
-
-/* test */
-
-.green {
-  background-color: green;
-}
-
-.black {
-  background-color: black;
-  color: white;
-}
-
-.white {
-  background-color: white;
-  color: black;
-}
-
-/** Just some styling to make it more readable. */
-
-
-
-
-.filter {
-  margin: 1rem 0;
-}
-
-.active-filter {
-  margin: 1rem 0;
-}
-
-.slick {
-  width: 400px;
-}
-
-.slick .slide {
-  width: 200px;
-  height: 100px;
-  padding: 1rem;
-  border: 1px solid #808080;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.marker {
-	fill: #red;
-	stroke: #31558d;
-	fill-opacity: .75;
-  transition: all .2s ease-in-out;
-}

@@ -1255,8 +1255,10 @@
             <h3 class="center">our locations</h3>
             <div class="search-form">
               <form>
-                <p><input class="search-input" type="search" name="q" placeholder="search"> 
-              </p></form>
+                <p><input class="search-input location-search" id="searchLocation" type="text" placeholder="search"> 
+              </p>
+              
+<p id="contenInput"></p></form>
               <div class="search-settings-global">
             
                 
@@ -1268,17 +1270,20 @@
                         <span class="sr-only">Toggle navigation</span>
                       </button>
                     </div>
-                    <div class="navbar-collapse filter-nav collapse" id="navbar-global" style="">
-                      <ul class="nav navbar-nav navbar-right">
-                        <li class="filter_btn"><a href="" data-filter="all">All</a>
+                    <div class="navbar-collapse filter-nav filter-nav_location collapse" id="navbar-global" style="">
+                      <ul class="nav navbar-nav navbar-right list" id="myUL">
+                       
+                        <li class="filter_btn"><a class="na" data-city="Boston">Tallahassee</a>
                         </li>
-                        <li class="filter_btn"><a href="" data-filter="cat-1">Filter 1</a>
+                        <li class="filterr_btn"><a class="eu" data-city="Bratislava">Bratislava</a>
                         </li>
-                        <li class="filterr_btn"><a href="" data-filter="cat-2">Filter 2</a>
+                         <li class="filterr_btn"><a class="eu" data-city="Zurich">Zug</a>
                         </li>
-                        <li class="filter_btn"><a href="" data-filter="cat-3">Filter 3</a>
+                        <li class="filterr_btn"><a class="eu" data-city="Porto">Lisbon</a>
                         </li>
-                        <li class="filter_btn"><a href="" data-filter="cat-4">Filter 4</a>
+                        <li class="filterr_btn"><a class="eu" data-city="Tallinn">Tallinn</a>
+                        </li>
+                        <li class="filter_btn"><a class="af" data-city="CapeTown">Mooinooi</a>
                         </li>
                       </ul>
                     </div>
@@ -1287,147 +1292,143 @@
               </div>
             </div>
             <div class="lacation-glob">
-              <div class="continent">
-                <div class="current ">
-                  <div class="location-heading">
+              <!--  -->
+              <div class="continent half list" id="list">
+                <div class="tab current">
+                  <input id="tab-four" type="radio" name="tabs2">
+                  <label for="tab-four" data-city="Boston"> 
                     <div class="d-flex">
-                      <h3 class="continent">north america</h3>
-                      <span class="count">02</span>
-                    </div>
-                    <div class="location-box_arrow"></div>
-                  </div>
-                  <div class="location-box">
-                    <div class="location-box_mark">01</div>
-                    <div>
-                      <div class="location-box_description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        <h3 class="continent">north america</h3>
+                        <span class="count">01</span>
                       </div>
-                      <ul class="location-box_list" id="list">
-                        <li><p class="location-box_name">country:</p> <p class="location-box_value country"></p></li>
-                        <li><p class="location-box_name">city:</p>
-                          <span class="location-box_value"  data-city="Boston">Boston</span>
-                        </li>
-                        <li><p class="location-box_name">adress:</p><p class="location-box_value amount"></p></li>
-                      </ul>
-                    
-                  
-                    </div>
-                 
-                  </div>
-                  <div class="location-box">
-                    <div class="location-box_mark">02</div>
+                  </label>
+                  <div class="tab-content">
+                   <div class="location-box">
+                    <div class="location-box_mark" data-city="Boston">01</div>
                     <div>
-                      <div class="location-box_description">
+                      <div class="location-box_description"  data-city="Boston">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit
                       </div>
                       <ul class="location-box_list">
-                        <li><p class="location-box_name">country:</p> <p class="location-box_value country"></p></li>
+                        <li><p class="location-box_name">country:</p> <p class="location-box_value country">USA</p></li>
+                        <li><p class="location-box_name">state:</p> <p class="location-box_value country">Florida</p></li>
                         <li><p class="location-box_name">city:</p>
-                          <span class="location-box_value"  data-city="NewYork">New York</span>
+                          <span class="location-box_value">Tallahassee</span>
                         </li>
-                        <li><p class="location-box_name">adress:</p><p class="location-box_value amount"></p></li>
+                        <!-- <li><p class="location-box_name">adress:</p><p class="location-box_value amount"></p></li> -->
                       </ul>
-                    
-                      <button href="#" class="main-header_btn">apply for an STO</button>
+                      <button href="#" class="location-btn main-header_btn">apply for an STO</button>
                     </div>
-                 
+                   </div>
                   </div>
-                  
                 </div>
-                <div class="current ">
-                  <div class="location-heading">
-                    <div class="d-flex">
-                      <h3 class="continent">europe</h3>
-                      <span class="count">03</span>
+                <div class="tab current">
+                  <input id="tab-five" type="radio" name="tabs2">
+                  <label for="tab-five" data-city="Bratislava"> <div class="d-flex">
+                    <h3 class="continent">europe</h3>
+                    <span class="count">04</span>
                     </div>
-                    <div class="location-box_arrow"></div>
-                  </div>
-                  <div class="location-box">
-                    <div class="location-box_mark">01</div>
-                    <div>
-                      <div class="location-box_description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                  </label>
+                  <div class="tab-content">
+                    <div class="location-box">
+                      <div class="location-box_mark" data-city="Bratislava">01</div>
+                      <div>
+                        <div class="location-box_description" data-city="Bratislava">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </div>
+                        <ul class="location-box_list">
+                          <li><p class="location-box_name">country:</p> <p class="location-box_value country">Slovak Republic</p></li>
+                          <li><p class="location-box_name">region:</p>  <span class="location-box_value">Bratislavský kraj</span></li>
+                          <li><p class="location-box_name">city:</p>  <span class="location-box_value">Bratislava</span></li>
+                          <!-- <li><p class="location-box_name">adress:</p><p class="location-box_value amount"></p></li> -->
+                        </ul>
+                      
+                     
                       </div>
-                      <ul class="location-box_list">
-                        <li><p class="location-box_name">country:</p> <p class="location-box_value country"></p></li>
-                        <li><p class="location-box_name">city:</p>  <span class="location-box_value" data-city="Wien">Wien</span></li>
-                        <li><p class="location-box_name">adress:</p><p class="location-box_value amount"></p></li>
-                      </ul>
-                    
                    
                     </div>
-                 
-                  </div>
-                  <div class="location-box">
-                    <div class="location-box_mark">02</div>
-                    <div>
-                      <div class="location-box_description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                    <div class="location-box">
+                      <div class="location-box_mark" data-city="Zurich">02</div>
+                      <div>
+                        <div class="location-box_description" data-city="Zurich">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </div>
+                        <ul class="location-box_list">
+                          <li><p class="location-box_name">country:</p> <p class="location-box_value country">Swiss Confederation</p></li>
+                          <li><p class="location-box_name">canton:</p>  <span class="location-box_value">canton of Zug</span></li>
+                          <li><p class="location-box_name">city:</p>  <span class="location-box_value">Zug</span></li>
+                          <!-- <li><p class="location-box_name">adress:</p><p class="location-box_value amount"></p></li> -->
+                        </ul>
                       </div>
-                      <ul class="location-box_list">
-                        <li><p class="location-box_name">country:</p> <p class="location-box_value country"></p></li>
-                        <li><p class="location-box_name">city:</p>  <span class="location-box_value" data-city="Kiev">Kiev</span></li>
-                        <li><p class="location-box_name">adress:</p><p class="location-box_value amount"></p></li>
-                      </ul>
-                    
                    
                     </div>
-                 
-                  </div>
-                  <div class="location-box">
-                    <div class="location-box_mark">03</div>
-                    <div>
-                      <div class="location-box_description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                    <div class="location-box">
+                      <div class="location-box_mark" data-city="Porto">03</div>
+                      <div>
+                        <div class="location-box_description" data-city="Porto">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </div>
+                        <ul class="location-box_list">
+                          <li><p class="location-box_name">country:</p> <p class="location-box_value country">Portuguese Republic</p></li>
+                          <li><p class="location-box_name">region:</p>  <span class="location-box_value">Lisbon and Tagus Valley</span></li>
+                          <li><p class="location-box_name">city:</p>  <span class="location-box_value">Lisbon</span></li>
+                          <!-- <li><p class="location-box_name">adress:</p><p class="location-box_value amount"></p></li> -->
+                        </ul>
+                      
+                     
                       </div>
-                      <ul class="location-box_list">
-                        <li><p class="location-box_name">country:</p> <p class="location-box_value country"></p></li>
-                        <li><p class="location-box_name">city:</p>  <span class="location-box_value" data-city="London">London</span></li>
-                        <li><p class="location-box_name">adress:</p><p class="location-box_value amount"></p></li>
-                      </ul>
-                    
-                      <button href="#" class="main-header_btn">apply for an STO</button>
+                   
                     </div>
-                 
-                  </div>
-                  
-                </div>
-                <div class="current ">
-                  <div class="location-heading">
-                    <div class="d-flex">
-                      <h3 class="continent">africa</h3>
-                      <span class="count">01</span>
-                    </div>
-                    <div class="location-box_arrow"></div>
-                  </div>
-                  <div class="location-box">
-                    <div class="location-box_mark">01</div>
-                    <div>
-                      <div class="location-box_description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                    <div class="location-box">
+                      <div class="location-box_mark" data-city="Tallinn">04</div>
+                      <div>
+                        <div class="location-box_description" data-city="Tallinn">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </div>
+                        <ul class="location-box_list">
+                          <li><p class="location-box_name">country:</p> <p class="location-box_value country">Republic of Estonia</p></li>
+                          <li><p class="location-box_name">county:</p>  <span class="location-box_value">Harju County</span></li>
+                          <li><p class="location-box_name">city:</p>  <span class="location-box_value">Tallinn</span></li>
+                          <!-- <li><p class="location-box_name">adress:</p><p class="location-box_value amount"></p></li> -->
+                        </ul>
+                      
+                        <button href="#" class="location-btn main-header_btn">apply for an STO</button>
                       </div>
-                      <ul class="location-box_list">
-                        <li><p class="location-box_name">country:</p> <p class="location-box_value country"></p></li>
-                        <li><p class="location-box_name">city:</p>
-                          <span data-city="Boston">Boston</span>
-                        </li>
-                        <li><p class="location-box_name">adress:</p><p class="location-box_value amount"></p></li>
-                      </ul>
-                    
-                      <button href="#" class="main-header_btn">apply for an STO</button>
+                   
                     </div>
-                 
+                    
                   </div>
-               
-                  
-                  
                 </div>
-               </div>
+                <div class="tab current">
+                  <input id="tab-six" type="radio" name="tabs2">
+                  <label for="tab-six" data-city="CapeTown"> <div class="d-flex">
+                    <h3 class="continent">africa</h3>
+                    <span class="count">01</span>
+                    </div>
+                  </label>
+                  <div class="tab-content">
+                    <div class="location-box">
+                      <div class="location-box_mark" data-city="CapeTown">01</div>
+                      <div>
+                        <div class="location-box_description" data-city="CapeTown">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </div>
+                        <ul class="location-box_list">
+                          <li><p class="location-box_name">country:</p> <p class="location-box_value country">Republic of South Africa</p></li>
+                          <li><p class="location-box_name">region:</p>  <span class="location-box_value">North West</span></li>
+                          <li><p class="location-box_name">city:</p>  <span class="location-box_value">Mooinooi</span></li>
+                          <!-- <li><p class="location-box_name">adress:</p><p class="location-box_value amount">Mooinooi</p></li> -->
+                        </ul>
+                      
+                        <button href="#" class="location-btn main-header_btn">apply for an STO</button>
+                      </div>
+                   
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--  -->
               <canvas id="globe"></canvas>
-             
-             
-             
-              
             </div>
           </div>
          <div class="col-12">
@@ -1552,7 +1553,7 @@
 
 
 
-<script type="text/javascript" src="https://bl.ocks.org/mbostock/raw/7ea1dde508cec6d2d95306f92642bc42/6aac691494f752142a67cc43c51a0fd09896dbd4/versor.js"></script>
+<!-- <script type="text/javascript" src="https://bl.ocks.org/mbostock/raw/7ea1dde508cec6d2d95306f92642bc42/6aac691494f752142a67cc43c51a0fd09896dbd4/versor.js"></script> -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="assets/js/main.js"></script>
     
