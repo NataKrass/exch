@@ -8,8 +8,8 @@ a,a:hover, a:focus{
 	text-decoration:none;
 	outline:none;
 }
-input, input:hover; input:focus, button, button:hover, button:focus{
-	box-shadow:none;
+input, input:hover, input:focus, button, button:hover, button:focus{
+	box-shadow: none;
 	outline:none;
 }
 ul {
@@ -981,13 +981,10 @@ h4 {
   padding: 15px;
   background: #fff;
   width: 150px;
-  top: 35px;
-  left: -60px;
+  top: 45px;
+  left: -90px;
   box-shadow: 0px 1px 6px 2px rgba(0, 0, 0, 0.2), inset 2px 4px 0 0 rgba(255, 255, 255, 0.08);
   border-radius: 5px;
-}
-.filter-nav_location {
-  width: auto;
 }
 .navbar-nav li a {
   white-space: nowrap;
@@ -1286,13 +1283,11 @@ h4 {
     max-width: 1244px;
   }
 }
-
 @media (min-width: 1480px){
   .container {
     max-width: 1444px;
   }
 }
-
 @media (min-width: 1700px){
   .container {
     max-width: 1644px;
@@ -1772,7 +1767,7 @@ h4 {
     width: 32px;
   }
   .countdown .count-title {
-    font-style: 12px;
+    font-size: 12px;
   }
   .card-bottom_right {
     padding-left: 4%;
@@ -1782,4 +1777,8 @@ h4 {
   }
 }
 
-
+.location-glob {
+  display: flex;
+  flex-direction: row-reverse;
+  overflow: hidden;
+}

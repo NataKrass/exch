@@ -1074,9 +1074,9 @@
                       <span class="top-back">
                         <span>1</span>
                       </span>
-                      <span class="bottom">2</span>
+                      <span class="bottom">1</span>
                       <span class="bottom-back">
-                        <span>2</span>
+                        <span>1</span>
                       </span>
                     </div>
               
@@ -1258,7 +1258,7 @@
                 <p><input class="search-input location-search" id="searchLocation" type="text" placeholder="search"> 
               </p>
               
-<p id="contenInput"></p></form>
+              </form>
               <div class="search-settings-global">
             
                 
@@ -1291,14 +1291,14 @@
                 </nav>
               </div>
             </div>
-            <div class="lacation-glob">
+            <div class="location-glob">
               <!--  -->
               <div class="continent half list" id="list">
                 <div class="tab current">
                   <input id="tab-four" type="radio" name="tabs2">
                   <label for="tab-four" data-city="Boston"> 
                     <div class="d-flex">
-                        <h3 class="continent">north america</h3>
+                        <h3 class="continent" data-city="Boston">north america</h3>
                         <span class="count">01</span>
                       </div>
                   </label>
@@ -1325,7 +1325,7 @@
                 <div class="tab current">
                   <input id="tab-five" type="radio" name="tabs2">
                   <label for="tab-five" data-city="Bratislava"> <div class="d-flex">
-                    <h3 class="continent">europe</h3>
+                    <h3 class="continent" data-city="Bratislava">europe</h3>
                     <span class="count">04</span>
                     </div>
                   </label>
@@ -1402,7 +1402,7 @@
                 <div class="tab current">
                   <input id="tab-six" type="radio" name="tabs2">
                   <label for="tab-six" data-city="CapeTown"> <div class="d-flex">
-                    <h3 class="continent">africa</h3>
+                    <h3 class="continent" data-city="CapeTown">africa</h3>
                     <span class="count">01</span>
                     </div>
                   </label>
@@ -1428,7 +1428,9 @@
                 </div>
               </div>
               <!--  -->
-              <canvas id="globe"></canvas>
+              <div class="">
+                <canvas id="globe"></canvas>
+              </div>
             </div>
           </div>
          <div class="col-12">
@@ -1550,11 +1552,8 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
 <script type="text/javascript" src="https://d3js.org/d3-geo.v1.min.js"></script>
 <script type="text/javascript" src="https://d3js.org/topojson.v2.min.js"></script>
-
-
-
-<!-- <script type="text/javascript" src="https://bl.ocks.org/mbostock/raw/7ea1dde508cec6d2d95306f92642bc42/6aac691494f752142a67cc43c51a0fd09896dbd4/versor.js"></script> -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://bl.ocks.org/mbostock/raw/7ea1dde508cec6d2d95306f92642bc42/6aac691494f752142a67cc43c51a0fd09896dbd4/versor.js"></script>
     <script src="assets/js/main.js"></script>
     
 </body>

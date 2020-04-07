@@ -11,7 +11,7 @@ $(document).ready(function(){
       }
       return false;
   });
-// Create Countdown
+
 const Countdown = {
   
   $el: $(".countdown"),
@@ -22,7 +22,7 @@ const Countdown = {
   init: function() {
    
     // (year, month, day, hours, mins, sec)
-    var startDate = new Date(2020, 3, 27, 00, 00, 0);
+    var startDate = new Date(2020, 4, 10, 00, 00, 0);
 
     var second = 1000;
     var minute = second * 60;
@@ -42,6 +42,7 @@ const Countdown = {
       minutes: this.$el.find(".bloc-time.min .figure"),
       seconds: this.$el.find(".bloc-time.sec .figure")
     };
+    console.log(this.$el.length)
     // Init countdown values
     this.values = {
       days: dDays,
@@ -62,7 +63,6 @@ const Countdown = {
   DeadLine();
     // Initialize total seconds
     this.total_seconds = diffrence
-
     // Animate countdown to the end
     this.count();
   },
@@ -173,15 +173,12 @@ Countdown.init();
 const Countdown1 = {
   // Backbone-like structure
   $el: $(".countdown1"),
-
-  // Params
   countdown_interval: null,
   total_seconds: 0,
 
-  // Initialize the countdown
   init: function() {
    // (year, month, day, hours, mins, sec)
-    var startDate = new Date(2020, 3, 27, 00, 00, 0);
+   var startDate = new Date(2020, 4, 10, 00, 00, 0);
 
     var second = 1000;
     var minute = second * 60;
@@ -208,11 +205,7 @@ const Countdown1 = {
       minutes: dMinutes,
       seconds: dSeconds
     };
-  console.log(dDays)
-    // Initialize total seconds
     this.total_seconds = diffrence
-
-    // Animate countdown to the end
     this.count();
   },
 
@@ -244,8 +237,6 @@ const Countdown1 = {
           that.values.hours = 23;
           --that.values.days;
         }
-
-        // Update DOM values
         that.checkHour(that.values.days, $day_1, $day_2);
         // Hours
         that.checkHour(that.values.hours, $hour_1, $hour_2);
@@ -270,14 +261,9 @@ const Countdown1 = {
       $bottom = $el.find(".bottom"),
       $back_top = $el.find(".top-back"),
       $back_bottom = $el.find(".bottom-back");
-
-    // Before we begin, change the back value
     $back_top.find("span").html(value);
 
-    // Also change the back bottom value
     $back_bottom.find("span").html(value);
-
-    // Then animate
     TweenMax.to($top, 0.8, {
       rotationX: "-180deg",
       transformPerspective: 300,
@@ -319,7 +305,6 @@ const Countdown1 = {
 
 Countdown1.init();
 
-
 $('.screen-slider').on('init reInit',function(event,slick){
   let amount = slick.slideCount;
   $('#range').attr('max', amount);
@@ -345,8 +330,6 @@ $('.slick-thumbs').on('afterChange',function(e,slick,currentSlide){
 $('#range1').on('input change',function(){
   $('.slick-thumbs').slick('slickGoTo', this.value - 1);
 });
-  
-  
  
 let $carousel = $('.screen-slider');
 $carousel
@@ -488,10 +471,9 @@ $('.js-toggle-menu').click(function(e){
 
 //globe
 
-// ms to wait after dragging before auto-rotating
 var rotationDelay = 3000
 // scale of the globe (not the canvas element)
-var scaleFactor = 0.9
+var scaleFactor = 1
 // autorotation speed
 var degPerSec = 6
 // start angles
@@ -499,10 +481,10 @@ var angles = { x: -20, y: 40, z: 0}
 // colors
 var colorWater = '#fff'
 var colorLand = '#f2f2f2'
-var colorGraticule = '#5b8eb524'
+var colorGraticule = 'transparent'
 var colorCountry = '#5b8eb5'
 
-var colorMarker = '#d6d6d6';
+var colorMarker = 'transparent';
 var colorActiveMarker = '#2f587f';
 //
 // Variables
@@ -697,9 +679,6 @@ $('.filter-nav_location ul li a').hover(function(e){
     default: 
       console.log('Click by past =)');
   }
-  
-
-
  });
 
 
@@ -711,7 +690,7 @@ function runRotateToCountry(contry, index) {
   stopRotation();
   rotateToCity(countriesCoordinates[index]);
   fillCurrentCountry(contry, index);
-  startRotation(rotationDelay);
+  // startRotation(rotationDelay);
 }
 
 
@@ -736,7 +715,7 @@ function fillMarkers(point, color) {
   context.beginPath();
   path(point);
   context.fillStyle = color;
-  context.lineWidth = 5;
+  context.lineWidth = 10;
   context.fill();
   context.strokeStyle = color;
   context.stroke();
@@ -761,8 +740,8 @@ function scale() {
     .translate([width / 2, height / 2])
   render();
   } else {
-    width = document.documentElement.clientWidth / 2
-    height = document.documentElement.clientHeight
+    width = document.documentElement.clientWidth / 1.3
+    height = document.documentElement.clientHeight * 1.35
     canvas.attr('width', width).attr('height', height)
     projection
       .scale((scaleFactor * Math.min(width, height)) / 2)
@@ -772,7 +751,7 @@ function scale() {
 }
 
 function startRotation(delay) {
-  autorotate.restart(rotate, delay || 0)
+  // autorotate.restart(rotate, delay || 0)
 }
 
 function stopRotation() {
@@ -795,7 +774,7 @@ function dragged() {
 }
 
 function dragended() {
-  startRotation(rotationDelay)
+  // startRotation(rotationDelay)
 }
 
 function render() {
@@ -864,7 +843,7 @@ function rotate(elapsed) {
   if (diff < elapsed) {
     rotation = projection.rotate()
     rotation[0] += diff * degPerMs
-    projection.rotate(rotation)
+    // projection.rotate(rotation)
     render()
   }
   lastTime = now
