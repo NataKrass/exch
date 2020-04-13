@@ -46,6 +46,12 @@ button {
 .top-nav_logo a img {
   width:100%;
 }
+.navbar-header {
+  padding-top: 3px;
+}
+.navbar-header a {
+  cursor: pointer;
+}
 .top-nav_toggle {
   margin: -3px 0 0 13px;
 }
@@ -135,8 +141,8 @@ button {
 .top-nav_logo {
   width: 250px;
 }
-.top-nav_logo a {
-    padding-right: 9px;
+.top-nav_logo .navbar-toggle img{
+  width: 14px;
 }
 .clicked  .icon-bar-dot,
 .clicked  .icon-bar {
