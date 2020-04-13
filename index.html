@@ -78,7 +78,7 @@
                                           </li>
                                           <li>
                                             <a href="/" class="header-nav_link">
-                                              <img src="assets/img/tok.png" class="header-nav_image">
+                                              <img src="assets/img/tok.png" class="header-nav_image header-nav_image-low">
                                               <p class="header-nav_text">tokToKey<span>e-commerce application</span></p>
                                             </a>
                                           </li>
@@ -190,7 +190,7 @@
                                 </li>
                                 <li>
                                   <a href="/" class="header-nav_link">
-                                    <img src="assets/img/tok.png" class="header-nav_image">
+                                    <img src="assets/img/tok.png" class="header-nav_image header-nav_image-low">
                                     <p class="header-nav_text">tokToKey<span>e-commerce application</span></p>
                                   </a>
                                 </li>
@@ -227,7 +227,7 @@
                     <div class="col-12">
                         <div class="main-header_box">
                             <a href="#" class="main-header_logo">
-                                <img src="assets/img/logo-main.png">
+                                <img src="assets/img/logo-header.png">
                             </a>
                             <div class="countdown">
                               <div class="bloc-time days" data-init-value="2">
@@ -539,47 +539,92 @@
             
                 
                 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-                  <div class="container-fluid">
-                    <div class="navbar-header">
-                      <button type="button" class="navbar-toggle filter-btn" data-toggle="collapse" data-target="#navbar-content">
+                
+                    <div class="filter-settings">
+                      <button type="button" class="market-toggle filter-btn">
                         <img src="./assets/img/filter.png" alt="">
                         <span class="sr-only">Toggle navigation</span>
                       </button>
                     </div>
-                    <div class="collapse navbar-collapse filter-nav" id="navbar-content">
-                      <ul class="nav navbar-nav navbar-right">
-                        <li class="slider_btn"><a href="#" data-filter-heading="all">All</a>
-                        </li>
-                        <li class="slider_btn"><a href="#" data-filter-heading="category-1">Filter 1</a>
-                        </li>
-                        <li class="slider_btn"><a href="#" data-filter-heading="category-2">Filter 2</a>
-                        </li>
-                        <li class="slider_btn"><a href="#" data-filter-heading="category-3">Filter 3</a>
-                        </li>
-                        <li class="slider_btn"><a href="#" data-filter-heading="category-4">Filter 4</a>
-                        </li>
-                      </ul>
-                      <ul class="nav navbar-nav navbar-right">
-                        <li class="slider_btn"><a href="#" data-filter-head="all">All</a>
-                        </li>
-                        <li class="slider_btn"><a href="#" data-filter-head="type-1">type 1</a>
-                        </li>
-                        <li class="slider_btn"><a href="#" data-filter-head="type-2">type 2</a>
-                        </li>
-                        <li class="slider_btn"><a href="#" data-filter-head="type-3">type 3</a>
-                        </li>
-                        <li class="slider_btn"><a href="#" data-filter-head="type-4">type 4</a>
-                        </li>
-                      </ul>
+                    <div class="filter-market d-none" id="navbar-content">
+                      <div class="card-top">
+                        <p>filter</p>
+                        <a href="#" class="filter-close"><i class="fas fa-times"></i></a>
+                      </div>
+                      
+                      <div class="filter-nav_top">
+                        <div class="filter-category filter-category_cat">
+                          <h5>
+                            categories
+                          </h5>
+                          <ul>
+                            <li class="filter-category_li">
+                                <input type="checkbox" id="assets" name="assets" data-filter-heading="assets">
+                                <label for="assets">assets</label>                         
+                            </li>
+                            <li class="filter-category_li">
+                                <input type="checkbox" id="commodoties" name="commodoties" data-filter-heading="commodoties">
+                                <label for="commodoties">commodoties</label>
+                            </li>
+                            <li class="filter-category_li">
+                                <input type="checkbox" id="cryptocurrencies" name="cryptocurrencies" data-filter-heading="cryptocurrencies">
+                                <label for="cryptocurrencies">cryptocurrencies</label>
+                            </li>
+                            <li class="filter-category_li"> 
+                                <input type="checkbox" id="fiat" name="fiat" data-filter-heading="fiat">
+                                <label for="fiat">fiat</label>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="filter-category d-none">
+                          <h5>
+                            <input type="checkbox" id="alphabetical" name="alphabetical" >
+                                <label for="alphabetical">alphabetical</label> 
+                            <span class="filter-category_current">(descending)</span> 
+                          </h5>
+                         <ul class="alphabet-list">
+                           <li><label href="#">A-E <div class="mark"></div></label> </li>
+                           <li><label href="#">F-L <div class="mark"></div></label> </li>
+                           <li><label href="#">M-S <div class="mark"></div></label> </li>
+                           <li><label href="#">T-Z <div class="mark"></div></label> </li>
+                         </ul>
+                         <ul>
+                          <li class="filter-category_li">
+                              <input type="checkbox" id="ascending" name="ascending">
+                              <label for="ascending">ascending</label>
+                          </li>
+                          <li class="filter-category_li"> 
+                              <input type="checkbox" id="descending" name="descending">
+                              <label for="descending">descending</label>
+                          </li>
+                        </ul>
+                        </div>
+                        <div class="filter-category filter-category_pr d-none">
+                          <h5>
+                            <input type="checkbox" id="price" name="price">
+                            <label for="price">price</label>   
+                          </h5>
+                         
+                          <div>
+                            <div class="range-slider">
+                            
+                              <span class="filter-category_price"></span>
+                              <input value="0" min="0" max="1000" step="100" type="range">
+                              <input value="200" min="100" max="1000" step="100" type="range">
+                            </div>
+                          </div>
+                        </div>
+                        <a href="#market" class="filter-clear" data-filter-heading="all">clear all</a>
+                      </div>
                     </div>
-                  </div>
+                  
                 </nav>
               </div>
             </div>
            
           <div class="slick-thumbs-wrapper center">
               <div id="slick-thumbs" class="slick-thumbs" >
-                <div class="card category-1 type-1">
+                <div class="card assets type-1">
                   <div class="card-top">
                      <div class="card-top_left d-flex">
                         <div class="cart-top_logo">XCE</div>
@@ -603,7 +648,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card category-2">
+                <div class="card commodoties">
                   <div class="card-top">
                      <div class="card-top_left d-flex">
                         <div class="cart-top_logo">XCE</div>
@@ -627,7 +672,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card category-1 type-1">
+                <div class="card assets type-1">
                   <div class="card-top">
                      <div class="card-top_left d-flex">
                         <div class="cart-top_logo">XCE</div>
@@ -651,7 +696,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card category-3 type-3">
+                <div class="card cryptocurrencies type-3">
                   <div class="card-top">
                      <div class="card-top_left d-flex">
                         <div class="cart-top_logo">XCE</div>
@@ -675,7 +720,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card category-2 type-3">
+                <div class="card commodoties type-3">
                   <div class="card-top">
                      <div class="card-top_left d-flex">
                         <div class="cart-top_logo">XCE</div>
@@ -699,7 +744,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card category-4 type-1">
+                <div class="card fiat type-1">
                   <div class="card-top">
                      <div class="card-top_left d-flex">
                         <div class="cart-top_logo">XCE</div>
@@ -723,7 +768,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card category-1 type-2">
+                <div class="card assets type-2">
                   <div class="card-top">
                      <div class="card-top_left d-flex">
                         <div class="cart-top_logo">XCE</div>
@@ -747,7 +792,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card category-3 type-3">
+                <div class="card cryptocurrencies type-3">
                   <div class="card-top">
                      <div class="card-top_left d-flex">
                         <div class="cart-top_logo">XCE</div>
@@ -771,7 +816,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card category-1 type-1">
+                <div class="card assets type-1">
                   <div class="card-top">
                      <div class="card-top_left d-flex">
                         <div class="cart-top_logo">XCE</div>
@@ -795,7 +840,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card category-2 type-4">
+                <div class="card commodoties type-4">
                   <div class="card-top">
                      <div class="card-top_left d-flex">
                         <div class="cart-top_logo">XCE</div>
@@ -819,7 +864,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card category-4 type-1">
+                <div class="card fiat type-1">
                   <div class="card-top">
                      <div class="card-top_left d-flex">
                         <div class="cart-top_logo">XCE</div>
@@ -843,7 +888,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card category-4 type-2">
+                <div class="card fiat type-2">
                   <div class="card-top">
                      <div class="card-top_left d-flex">
                         <div class="cart-top_logo">XCE</div>
@@ -867,7 +912,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card category-1 type-1">
+                <div class="card assets type-1">
                   <div class="card-top">
                      <div class="card-top_left d-flex">
                         <div class="cart-top_logo">XCE</div>
@@ -891,7 +936,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card category-1 type-4">
+                <div class="card assets type-4">
                   <div class="card-top">
                      <div class="card-top_left d-flex">
                         <div class="cart-top_logo">XCE</div>
@@ -915,7 +960,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card category-2 type-4">
+                <div class="card commodoties type-4">
                   <div class="card-top">
                      <div class="card-top_left d-flex">
                         <div class="cart-top_logo">XCE</div>
@@ -939,7 +984,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card category-4 type-1">
+                <div class="card fiat type-1">
                   <div class="card-top">
                      <div class="card-top_left d-flex">
                         <div class="cart-top_logo">XCE</div>
@@ -963,7 +1008,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card category-1 type-2">
+                <div class="card assets type-2">
                   <div class="card-top">
                      <div class="card-top_left d-flex">
                         <div class="cart-top_logo">XCE</div>
@@ -987,7 +1032,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card category-2 type-2">
+                <div class="card commodoties type-2">
                   <div class="card-top">
                      <div class="card-top_left d-flex">
                         <div class="cart-top_logo">XCE</div>
@@ -1011,34 +1056,6 @@
                     </div>
                   </div>
                 </div>
-          
-                  <!-- foto
-                  <li class="foto" style="color: #fff; background: #f19;">1 Foto</li>
-                  <li class="foto" style="color: #000; background: #00f4fe;">2 Foto</li>
-                  <li class="foto" style="color: #fff; background: #f19;">3 Foto</li>
-                  <li class="foto" style="color: #000; background: #00f4fe;">4 Foto</li>
-                  <li class="foto" style="color: #fff; background: #f19;">5 Foto</li>
-                  <li class="foto" style="color: #000; background: #00f4fe;">6 Foto</li>
-                  <li class="foto" style="color: #fff; background: #f19;">7 Foto</li>
-                  <li class="foto" style="color: #000; background: #00f4fe;">8 Foto</li>
-             
-                  <li class="movie" style="color: #fff; background: #ccbf00;">1 movie</li>
-                  <li class="movie" style="color: #000; background: #0828ff;">2 movie</li>
-                  <li class="movie" style="color: #fff; background: #cc181e;">3 movie</li>
-                  <li class="movie" style="color: #000; background: #7acaff;">4 movie</li>
-                  <li class="movie" style="color: #fff; background: #cc181e;">5 movie</li>
-                  <li class="movie" style="color: #000; background: #7acaff;">6 movie</li>
-                  <li class="movie" style="color: #fff; background: #cc181e;">7 movie</li>
-                  <li class="movie" style="color: #000; background: #7acaff;">8 movie</li>
-                 
-                  <li class="sport" style="color: #fff; background: #2ccc02;">1 sport</li>
-                  <li class="sport" style="color: #000; background: #ff0080;">2 sport</li>
-                  <li class="sport" style="color: #fff; background: #2ccc02;">3 sport</li>
-                  <li class="sport" style="color: #000; background: #ff0080;">4 sport</li>
-                  <li class="sport" style="color: #fff; background: #2ccc02;">5 sport</li>
-                  <li class="sport" style="color: #000; background: #ff0080;">6 sport</li>
-                  <li class="sport" style="color: #fff; background: #2ccc02;">7 sport</li>
-                  <li class="sport" style="color: #000; background: #ff0080;">8 sport</li> -->
           
               </div>
               <input  class="filter-range" type="range" id="range1" min="1" value="1" step="1"  max="4"/>

@@ -384,64 +384,101 @@ $('.screen-slider').on('afterChange', function(event, slick, currentSlide, nextS
  
 
 //market
- 
-$('#slick-thumbs').slickFilterable({
-  filterName: 'filter-heading', 
-  filterName1: 'filter-head', 
-  filter: function( category, slider, settings ) {
-    return $(this).hasClass( category );
-  },
-  slick: {
-    rows: 2,
-    centerMode: true,
-    centerPadding: '40px',
-    infinite: false,
-    dots: false,
-    arrows: true,
-    slidesPerRow: 3,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 992,
-        settings: {
-          slidesPerRow: 2,
-          slidesToScroll: 1,
-          rows: 2
+const MarketSlide = () => {
+  $('#slick-thumbs').slickFilterable({
+    filterName: 'filter-heading', 
+    filter: function( category, slider, settings ) {
+       return $(this).hasClass( category );
+    },
+    slick: {
+      rows: 2,
+      centerMode: true,
+      centerPadding: '40px',
+      infinite: false,
+      dots: false,
+      arrows: true,
+      slidesPerRow: 3,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            slidesPerRow: 2,
+            slidesToScroll: 1,
+            rows: 2
+          }
+        },
+        {
+          breakpoint: 490,
+          settings: {
+  
+            slidesPerRow: 1,
+            slidesToScroll: 1,
+            rows: 2
+          }
         }
-      },
-      {
-        breakpoint: 490,
-        settings: {
-
-          slidesPerRow: 1,
-          slidesToScroll: 1,
-          rows: 2
-        }
-      }
-    ]
-  }
-});
+      ]
+    }
+  });
+}
+MarketSlide();
 
 let $viewBtn = $('.view-all');
 $viewBtn.on('click', function(){
   $('#slick-thumbs').slick('unslick');
-
+    MoreMarketSlide();
+    $viewBtn.addClass('hide-more');
+    $viewBtn.removeClass('view-all');
 });
+const MoreMarketSlide = () => {
+  $('#slick-thumbs').slickFilterable({
+    filterName: 'filter-heading', 
+    filter: function( category, slider, settings ) {
+      return $(this).hasClass( category );
+    },
+    slick: {
+      rows: 5,
+      centerMode: true,
+      centerPadding: '40px',
+      infinite: false,
+      dots: false,
+      arrows: true,
+      slidesPerRow: 3,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            slidesPerRow: 2,
+            slidesToScroll: 1,
+            rows: 3
+          }
+        },
+        {
+          breakpoint: 490,
+          settings: {
+  
+            slidesPerRow: 1,
+            slidesToScroll: 1,
+            rows: 2
+          }
+        }
+      ]
+    }
+  });
+}
+
 
 $('.filter-nav').on('click', function(){
   if($viewBtn.hasClass('hideall')){
-    console.log(777)
     $('.view-all').removeClass('d-none');
     $('.filter-range').removeClass('d-none');
     $('.view-all').text('view all listings');
   }
-  else {
-
-  }
 });
 
 $('#slick-thumbs').on('destroy', function(){
- console.log('distroy');
+
  $('.view-all').addClass('d-none');
  $('.view-all').text('hide all listings');
  $('.filter-range').addClass('d-none');
@@ -450,13 +487,12 @@ $('#slick-thumbs').on('destroy', function(){
 });
 
 $('#slick-thumbs').on('init', function(){
-  console.log($('.slick-slide .card').length);
+  
   $('.view-all').removeClass('d-none');
   $('.view-all').text('view all listings');
   $('.filter-range').removeClass('d-none');
   $('.slick-thumbs').removeClass('unslicked');
    if ($('.slick-slide .card').length < 6){
-     console.log('less than 6')
      $('.filter-range').addClass('d-none');
      $('.view-all').addClass('d-none');
    }
@@ -732,7 +768,7 @@ function setAngles() {
 
 function scale() {
   if(screen.width < 768){
-    width = document.documentElement.clientWidth / 1.1
+    width = document.documentElement.clientWidth / 1.2
     height = document.documentElement.clientHeight / 1.3
   canvas.attr('width', width).attr('height', height)
   projection
@@ -927,6 +963,35 @@ loadData(function(world, cList) {
   autorotate = d3.timer(rotate)
 })
 
+
+// filter
+$('input[type="checkbox"]').on('click', function() {
+ // console.log( $(this).toggleClass('checked'));
+ 
+})
+$('.market-toggle').on('click', function(e) {
+  e.preventDefault();
+  $('#navbar-content').removeClass('d-none');
+ })
+$('.filter-close').on('click', function(e) {
+  e.preventDefault();
+  $('#navbar-content').addClass('d-none');
+ })
+$('.alphabet-list li label').on('click', function() {
+  $(this).toggleClass('active')
+ })
+var sliderSections = document.getElementsByClassName("range-slider");
+for( var x = 0; x < sliderSections.length; x++ ){
+  var sliders = sliderSections[x].getElementsByTagName("input");
+  for( var y = 0; y < sliders.length; y++ ){
+    if( sliders[y].type ==="range" ){
+      sliders[y].oninput = getVals;
+      // Manually trigger event first time to display values
+      sliders[y].oninput();
+    }
+  }
+}
+
 });
 
 //filtering slider
@@ -972,11 +1037,11 @@ loadData(function(world, cList) {
            * to avoid slick break layout when there are less slides than on "page".
            */
           slickObj = slider.slick( settings.slick );
-
           // Handle Filter Click
-          $('[data-' + settings.filterName + ']').on('click', function(event) {
-              event.preventDefault();
-
+           $('[data-' + settings.filterName + ']').on('click', function(event) {
+           
+              // event.preventDefault();
+              console.log( $(this).prop( "checked"));
               var category = $(this).data(settings.filterName),
                   newSlides = $.extend(true, {}, slides),
                   newSlickOptions;
@@ -984,21 +1049,27 @@ loadData(function(world, cList) {
               if ( ! category ) return;
 
               // Before Filter Slides
-              if ( typeof settings.beforeFilter == 'function' ) {
+              if ( typeof settings.beforeFilter == 'function') {
                   settings.beforeFilter.call(this, category, slider, slides);
+             
               }
 
               // Destroy and empty
               slider.slick('unslick');
 
               // Recreate All Slides
-              if ( category === 'all' ) {
-                  slider.find( settings.slideSelector ).remove();
-                  slider.append( newSlides );
+              if ( category === 'all' || !$(this).prop( "checked")) {
+                // event.preventDefault();
+                  //slider.find( settings.slideSelector ).remove();
+                   slider.append( newSlides );
                   slider.slick( settings.slick );
-
+                 
+                
+                  $('.filter-category_cat input[type="checkbox"]').prop("checked", false)
+                 
                   return;
               }
+            
 
               /**
                * Filter Slides
@@ -1010,8 +1081,11 @@ loadData(function(world, cList) {
                */
               if ( typeof settings.filter !== 'function' ) {
                   newSlides = newSlides.filter( settings.filter );
+                 
               } else {
+                
                   newSlides = newSlides.filter( function() {
+                   
                       return settings.filter.call( this, category, slider, $.extend( true, {}, settings ) );
                   } );
               }
@@ -1020,52 +1094,20 @@ loadData(function(world, cList) {
               slider.append( newSlides );
               slider.slick( settings.slick );
           });
-          $('[data-' + settings.filterName1 + ']').on('click', function(event) {
-            event.preventDefault();
-
-            var category = $(this).data(settings.filterName1),
-                newSlides = $.extend(true, {}, slides),
-                newSlickOptions;
-
-            if ( ! category ) return;
-
-            // Before Filter Slides
-            if ( typeof settings.beforeFilter == 'function' ) {
-                settings.beforeFilter.call(this, category, slider, slides);
-            }
-
-            // Destroy and empty
-            slider.slick('unslick');
-
-            // Recreate All Slides
-            if ( category === 'all' ) {
-                slider.find( settings.slideSelector ).remove();
-                slider.append( newSlides );
-                slider.slick( settings.slick );
-
-                return;
-            }
-
-            /**
-             * Filter Slides
-             *
-             * If settings.filter is a function we pass the category, slider and a copy of settings
-             * expecting a true or false return to pass it to jQuery.filter();
-             *
-             * If not, we just pass it directly.
-             */
-            if ( typeof settings.filter !== 'function' ) {
-                newSlides = newSlides.filter( settings.filter );
-            } else {
-                newSlides = newSlides.filter( function() {
-                    return settings.filter.call( this, category, slider, $.extend( true, {}, settings ) );
-                } );
-            }
-
-            slider.find( settings.slideSelector ).remove();
-            slider.append( newSlides );
-            slider.slick( settings.slick );
-        });
+        
       });
   };
-}(jQuery));
+}(jQuery));   
+
+function getVals(){
+  // Get slider values
+  let parent = this.parentNode;
+  let slides = parent.getElementsByTagName("input");
+    let slide1 = parseFloat( slides[0].value );
+    let slide2 = parseFloat( slides[1].value );
+  // Neither slider will clip the other, so make sure we determine which is larger
+  if( slide1 > slide2 ){ let tmp = slide2; slide2 = slide1; slide1 = tmp; }
+  
+  let displayElement = parent.getElementsByClassName("filter-category_price")[0];
+      displayElement.innerHTML = "min " + slide1 + " USD - max " + slide2 + " USD";
+}
